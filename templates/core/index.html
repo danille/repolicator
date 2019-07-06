@@ -10,11 +10,18 @@
                 An app which will replicate it's own code to your Github account.
             </p>
             {% if user.is_authenticated %}
-                <a class="btn btn-light btn-lg" href="{% url 'replicate' %}">REPLICATE REPO TO ME</a>
+                {% if message %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+                <a class="btn btn-dark" href="{% url 'replicate' %}">Replicate Repo</a>
             {% else %}
-            <p>
-                To replicate repository with code of this app, first you need to <a class="link" href="{% url 'social:begin' 'github' %}">login with GitHub</a>
-            </p>
+                <p>
+                    To replicate repository with code of this app, first you need to <a class="link"
+                                                                                        href="{% url 'social:begin' 'github' %}">login
+                    with GitHub</a>
+                </p>
             {% endif %}
         </div>
     </div>
