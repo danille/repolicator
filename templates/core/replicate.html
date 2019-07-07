@@ -1,0 +1,18 @@
+{% extends 'repolicator/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+    <p>
+        To replicate code of this app to repository in your GitHub account, please, provide name for repo, where it should be replicated
+    </p>
+        <form method="post" class="">
+            <div class="form-group">
+            {{ replication_form }}
+            </div>
+            {% csrf_token %}
+            <button class="btn btn-light btn-lg" type="submit">replicate</button>
+        </form>
+    </div>
+
+{% endblock %}

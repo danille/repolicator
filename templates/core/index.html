@@ -2,14 +2,27 @@
 {% block content %}
     <div class="jumbotron">
         <div class="container">
-            <p id="jumbotron-app-name">
+            <h2>
                 This is Repolicator
-            </p>
+            </h2>
             <br>
-            <p id="jumbotron-app-desc">
+            <p>
                 An app which will replicate it's own code to your Github account.
             </p>
-
+            {% if user.is_authenticated %}
+                {% if message %}
+                    <div class="alert alert-success" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+                <a class="btn btn-dark" href="{% url 'replicate' %}">Replicate Repo</a>
+            {% else %}
+                <p>
+                    To replicate repository with code of this app, first you need to <a class="link"
+                                                                                        href="{% url 'social:begin' 'github' %}">login
+                    with GitHub</a>
+                </p>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
